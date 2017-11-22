@@ -1,0 +1,7 @@
+﻿-Rajouter l'identification
+-Régler le problème de l'ordre de la liste en fonction des votes dans l'Api
+-Enlever la possibilité de modifier le pseudo (A faire dans l'Api aussi ?)
+-Corriger le petit beug qui fait que quand je supprime en chaîne des InterestPoint le programme revient au HomeConnected
+-Changer le système de notification (wiki ig ?)
+-Faire en sorte de remmetre NameCertified à null et de griser la textbox quand on selectionne pas le checkBox isCertified
+-Refaire la génération du dbcontext (data base first) -> API
