@@ -25,7 +25,7 @@
         <TextBlock x:Name="Name"  Text="{Binding SelectedInterestPoint.InterestPoint.Name}" Margin="50,0,0,10" FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontWeight="Bold"/>
         <TextBlock x:Name="Latitude" Text="{Binding SelectedInterestPoint.InterestPoint.Latitude}" HorizontalAlignment="Left" Margin="50,0,0,0" FontStyle="Italic" Foreground="#FF535353" Height="54" Grid.Row="1" VerticalAlignment="Top" />
         <TextBlock x:Name="Longitude" Text="{Binding SelectedInterestPoint.InterestPoint.Longitude}" HorizontalAlignment="Left" Margin="150,0,0,0" FontStyle="Italic" Foreground="#FF535353" Height="54" VerticalAlignment="Top" Grid.Row="1" />
-        <TextBlock x:Name="Moyenne" Text="{Binding SelectedInterestPoint.Moyenne}" HorizontalAlignment="Left" Margin="0,0,0,10" FontSize="24" Height="32" VerticalAlignment="Bottom" Grid.Column="1" FontWeight="Bold" />
+        <TextBlock x:Name="Moyenne" Text="{Binding SelectedInterestPoint.Average}" HorizontalAlignment="Left" Margin="0,0,0,10" FontSize="24" Height="32" VerticalAlignment="Bottom" Grid.Column="1" FontWeight="Bold" />
 
         <TextBlock x:Name="Pseudo" Text="{Binding SelectedInterestPoint.InterestPoint.IdUserNavigation.Pseudo}" FontSize="18" Margin="50,0,0,0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" />
 
@@ -43,7 +43,7 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Description.Explication}" VerticalAlignment="Top" Margin="3" FontSize="15" />
-                        <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="{Binding Moyenne}" VerticalAlignment="Top" Grid.Column="1" Grid.Row="0" Margin="3" FontSize="22" FontWeight="Bold"/>
+                        <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="{Binding Average}" VerticalAlignment="Top" Grid.Column="1" Grid.Row="0" Margin="3" FontSize="22" FontWeight="Bold"/>
                         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Description.IdUserNavigation.Pseudo}" VerticalAlignment="Top" Grid.Row="3" Margin="3" FontStyle="Italic"/>
                     </Grid>
                 </DataTemplate>

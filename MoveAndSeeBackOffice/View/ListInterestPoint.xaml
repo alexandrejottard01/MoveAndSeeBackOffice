@@ -28,7 +28,7 @@
                             <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="{Binding Moyenne}" VerticalAlignment="Top" Margin="3" Grid.Column="1" FontSize="35"/>
+                        <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="{Binding Average}" VerticalAlignment="Top" Margin="3" Grid.Column="1" FontSize="35"/>
 
 
                         <Grid>

@@ -12,7 +12,7 @@ namespace MoveAndSeeBackOffice.Model
         [JsonProperty("Description")]
         public Description Description { get; set; }
 
-        [JsonProperty("Moyenne")]
-        public int Moyenne { get; set; }
+        [JsonProperty("Average")]
+        public int Average { get; set; }
     }
 }
