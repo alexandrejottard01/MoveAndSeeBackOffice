@@ -14,7 +14,7 @@ namespace MoveAndSeeBackOffice.Model
         public long IdUnknownPoint { get; set; }
 
         [JsonProperty("IdUser")]
-        public long IdUser { get; set; }
+        public string IdUser { get; set; }
 
         [JsonProperty("Latitude")]
         public double Latitude { get; set; }

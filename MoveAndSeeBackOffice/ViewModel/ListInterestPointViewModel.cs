@@ -47,7 +47,7 @@ namespace MoveAndSeeBackOffice.ViewModel
         public async Task GetAllInterestPointByServiceAsync()
         {
             var service = new InterestPointService();
-            var listInterestPoints = await service.GetAllInterestPointSortedByVoteInterestPoint();
+            var listInterestPoints = await service.GetAllInterestPointSortedByVoteInterestPoint(Token.tokenCurrent);
             ListInterestPoints = new ObservableCollection<InterestPointWithVote>(listInterestPoints);
         }
 

@@ -1,4 +1,5 @@
-﻿using MoveAndSeeBackOffice.View;
+﻿using MoveAndSeeBackOffice.Model;
+using MoveAndSeeBackOffice.View;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,6 +24,7 @@ namespace MoveAndSeeBackOffice
     /// </summary>
     sealed partial class App : Application
     {
+        
         /// <summary>
         /// Initialise l'objet d'application de singleton.  Il s'agit de la première ligne du code créé
         /// à être exécutée. Elle correspond donc à l'équivalent logique de main() ou WinMain().
@@ -67,7 +69,7 @@ namespace MoveAndSeeBackOffice
                     // Quand la pile de navigation n'est pas restaurée, accédez à la première page,
                     // puis configurez la nouvelle page en transmettant les informations requises en tant que
                     // paramètre
-                    rootFrame.Navigate(typeof(HomeConnected), e.Arguments);
+                    rootFrame.Navigate(typeof(HomeNotConnected), e.Arguments);
                 }
                 // Vérifiez que la fenêtre actuelle est active
                 Window.Current.Activate();

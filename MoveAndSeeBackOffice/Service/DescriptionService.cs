@@ -11,9 +11,10 @@ namespace MoveAndSeeBackOffice.Service
 {
     class DescriptionService
     {
-        public async Task<IEnumerable<DescriptionWithVote>> GetAllDescriptionsByInterestPoint(long idInterestPoint)
+        public async Task<IEnumerable<DescriptionWithVote>> GetAllDescriptionsByInterestPoint(long idInterestPoint, Token token)
         {
             var http = new HttpClient();
+            http.DefaultRequestHeaders.Add("Authorization", "Bearer " + token.TokenString);
 
             //Url à changer en : http://moveandsee.azurewebsites.net/api/Description/GetAllDescriptionsSortedByVoteByInterestPoint/
             //Quand le problème dans l'Api sera reglé
@@ -23,9 +24,10 @@ namespace MoveAndSeeBackOffice.Service
             return descriptions;
         }
 
-        public async Task<int> DeleteDescriptionById(long idDescription)
+        public async Task<int> DeleteDescriptionById(long idDescription, Token token)
         {
             var http = new HttpClient();
+            http.DefaultRequestHeaders.Add("Authorization", "Bearer " + token.TokenString);
 
             HttpResponseMessage response = await http.DeleteAsync(new Uri("http://moveandsee.azurewebsites.net/api/Description/DeleteDescriptionById/" + idDescription));
             if (response.IsSuccessStatusCode)

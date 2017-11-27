@@ -45,7 +45,7 @@ namespace MoveAndSeeBackOffice.ViewModel
         public async Task GetAllUnknownPointByServiceAsync()
         {
             var service = new UnknownPointService();
-            var listUnknownPoints = await service.GetAllUnknownPoints();
+            var listUnknownPoints = await service.GetAllUnknownPoints(Token.tokenCurrent);
             ListUnknownPoints = new ObservableCollection<UnknownPoint>(listUnknownPoints);
         }
 
@@ -78,7 +78,7 @@ namespace MoveAndSeeBackOffice.ViewModel
         public async Task DeleteUnknownPointAsync()
         {
             var service = new UnknownPointService();
-            int resultCode = await service.DeleteUnknownPointById((int)SelectedUnknownPoint.IdUnknownPoint);
+            int resultCode = await service.DeleteUnknownPointById((int)SelectedUnknownPoint.IdUnknownPoint, Token.tokenCurrent);
 
             if (resultCode == 200)
             {

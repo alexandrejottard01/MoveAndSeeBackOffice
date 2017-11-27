@@ -47,7 +47,7 @@ namespace MoveAndSeeBackOffice.ViewModel
         public async Task DeleteDescriptionAsync()
         {
             var service = new DescriptionService();
-            int resultCode = await service.DeleteDescriptionById(SelectedDescription.Description.IdDescription);
+            int resultCode = await service.DeleteDescriptionById(SelectedDescription.Description.IdDescription, Token.tokenCurrent);
 
             if (resultCode == 200)
             {

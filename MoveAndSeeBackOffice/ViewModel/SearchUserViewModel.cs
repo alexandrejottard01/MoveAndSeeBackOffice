@@ -41,7 +41,7 @@ namespace MoveAndSeeBackOffice.ViewModel
         public async Task SearchUserByServiceAsync()
         {
             var service = new UserService();
-            User user = await service.GetUserByPseudo(PseudoUserSearch);
+            User user = await service.GetUserByPseudo(PseudoUserSearch, Token.tokenCurrent);
 
             
 

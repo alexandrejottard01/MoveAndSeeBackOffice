@@ -99,6 +99,8 @@
     <Compile Include="Model\DescriptionWithVote.cs" />
     <Compile Include="Model\InterestPoint.cs" />
     <Compile Include="Model\InterestPointWithVote.cs" />
+    <Compile Include="Model\LoginUser.cs" />
+    <Compile Include="Model\Token.cs" />
     <Compile Include="Model\UnknownPoint.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\VoteDescription.cs" />

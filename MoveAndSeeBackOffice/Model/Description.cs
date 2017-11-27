@@ -16,7 +16,7 @@ namespace MoveAndSeeBackOffice.Model
         public string Explication { get; set; }
 
         [JsonProperty("IdUser")]
-        public long IdUser { get; set; }
+        public string IdUser { get; set; }
 
         [JsonProperty("IdInterestPoint")]
         public long IdInterestPoint { get; set; }

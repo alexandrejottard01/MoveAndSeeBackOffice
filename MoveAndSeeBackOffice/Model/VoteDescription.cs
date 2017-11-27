@@ -13,7 +13,7 @@ namespace MoveAndSeeBackOffice.Model
         public bool IsPositiveAssessment { get; set; }
 
         [JsonProperty("IdUser")]
-        public long IdUser { get; set; }
+        public string IdUser { get; set; }
 
         [JsonProperty("IdDescription")]
         public long IdDescription { get; set; }

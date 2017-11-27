@@ -12,9 +12,10 @@ namespace MoveAndSeeBackOffice.Service
 {
     class InterestPointService
     {
-        public async Task<IEnumerable<InterestPointWithVote>> GetAllInterestPointSortedByVoteInterestPoint()
+        public async Task<IEnumerable<InterestPointWithVote>> GetAllInterestPointSortedByVoteInterestPoint(Token token)
         {
             var http = new HttpClient();
+            http.DefaultRequestHeaders.Add("Authorization", "Bearer " + token.TokenString);
 
             //Url à changer en : http://moveandsee.azurewebsites.net/api/InterestPoint/GetAllInterestPointSortedByVoteInterestPoint
             //Quand le problème dans l'Api sera reglé
@@ -24,9 +25,10 @@ namespace MoveAndSeeBackOffice.Service
             return points;
         }
 
-        public async Task<int> DeleteInterestPointById(long idInterestPoint)
+        public async Task<int> DeleteInterestPointById(long idInterestPoint, Token token)
         {
             var http = new HttpClient();
+            http.DefaultRequestHeaders.Add("Authorization", "Bearer " + token.TokenString);
 
             HttpResponseMessage response = await http.DeleteAsync(new Uri("http://moveandsee.azurewebsites.net/api/InterestPoint/DeleteInterestPointById/" + idInterestPoint));
             if (response.IsSuccessStatusCode)

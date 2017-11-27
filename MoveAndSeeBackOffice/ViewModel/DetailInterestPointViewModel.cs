@@ -51,7 +51,7 @@ namespace MoveAndSeeBackOffice.ViewModel
         public async Task GetAllDescriptionsByServiceAsync()
         {
             var service = new DescriptionService();
-            var listDescriptions = await service.GetAllDescriptionsByInterestPoint(SelectedInterestPoint.InterestPoint.IdInterestPoint);
+            var listDescriptions = await service.GetAllDescriptionsByInterestPoint(SelectedInterestPoint.InterestPoint.IdInterestPoint, Token.tokenCurrent);
             ListDescriptions = new ObservableCollection<DescriptionWithVote>(listDescriptions); 
         }
 
@@ -71,7 +71,7 @@ namespace MoveAndSeeBackOffice.ViewModel
         public async Task DeleteInterestPointAsync()
         {
             var service = new InterestPointService();
-            int resultCode = await service.DeleteInterestPointById((int)SelectedInterestPoint.InterestPoint.IdInterestPoint);
+            int resultCode = await service.DeleteInterestPointById((int)SelectedInterestPoint.InterestPoint.IdInterestPoint, Token.tokenCurrent);
 
             if (resultCode == 200)
             {

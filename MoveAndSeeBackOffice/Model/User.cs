@@ -11,16 +11,12 @@ namespace MoveAndSeeBackOffice.Model
 {
     class User : ObservableObject
     {
-        [JsonProperty("IdUser")]
-        public long IdUser { get; set; }
+        [JsonProperty("Id")]
+        public string IdUser { get; set; }
 
-        [JsonProperty("Pseudo")]
+        [JsonProperty("UserName")]
         public string Pseudo { get; set; }
-
-        [JsonProperty("Password")]
-        public string Password { get; set; }
-
-
+        
         private bool _isCertified;
         [JsonProperty("IsCertified")]
         public bool IsCertified {
@@ -35,7 +31,7 @@ namespace MoveAndSeeBackOffice.Model
             }
         }
 
-    [JsonProperty("NameCertified")]
+        [JsonProperty("NameCertified")]
         public string NameCertified { get; set; }
 
         [JsonProperty("Email")]
@@ -49,10 +45,7 @@ namespace MoveAndSeeBackOffice.Model
 
         [JsonProperty("BirthDate")]
         public DateTime? BirthDate { get; set; }
-
-        [JsonProperty("IsAdmin")]
-        public bool IsAdmin { get; set; }
-
+        
         [Timestamp]
         public byte[] RowVersion { get; set; }
     }

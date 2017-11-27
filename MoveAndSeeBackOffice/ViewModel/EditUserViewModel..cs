@@ -62,7 +62,7 @@ namespace MoveAndSeeBackOffice.ViewModel
         {
             var service = new UserService();
 
-            int resultCode = await service.EditUser(UserEdit);
+            int resultCode = await service.EditUser(UserEdit, Token.tokenCurrent);
 
             if (resultCode == 200)
             {

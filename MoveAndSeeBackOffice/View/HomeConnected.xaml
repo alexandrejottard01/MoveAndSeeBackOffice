@@ -16,7 +16,7 @@
             <RowDefinition/>
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="ListInterestPoint" Content="Lister les points d'intérêt" Margin="0" Command="{Binding ListInterestPointCommand}" HorizontalAlignment="Center" VerticalAlignment="Stretch" Foreground="#FF011559" Background="#FFE4E4E4" FontSize="20" Grid.Row="1" BorderThickness="0" Width="240" Height="45"/>
+        <Button x:Name="ListInterestPoint" Content="aaLister les points d'intérêt" Margin="0" Command="{Binding ListInterestPointCommand}" HorizontalAlignment="Center" VerticalAlignment="Stretch" Foreground="#FF011559" Background="#FFE4E4E4" FontSize="20" Grid.Row="1" BorderThickness="0" Width="240" Height="45"/>
         <Button x:Name="ListUnknownPoint" Content="Lister les points inconnus&#xA;" Margin="0" Command="{Binding ListUnknownPointCommand}" HorizontalAlignment="Center" VerticalAlignment="Stretch" Foreground="#FF011559" Background="#FFE4E4E4" FontSize="20" Grid.Row="2" BorderThickness="0" Width="240" Height="45"/>
         <Button x:Name="SearchUser" Content="Rechercher un utilisateur" Margin="0" Command="{Binding SearchUserCommand}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="#FF011559" Background="#FFE4E4E4" FontSize="20" Grid.Row="3" BorderThickness="0" Width="240" Height="45" />
     </Grid>
