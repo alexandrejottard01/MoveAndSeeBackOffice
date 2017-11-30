@@ -16,10 +16,8 @@ namespace MoveAndSeeBackOffice.Service
         {
             var http = new HttpClient();
             http.DefaultRequestHeaders.Add("Authorization", "Bearer " + token.TokenString);
-
             //Url à changer en : http://moveandsee.azurewebsites.net/api/InterestPoint/GetAllInterestPointSortedByVoteInterestPoint
-            //Quand le problème dans l'Api sera reglé
-            var stringInput = await http.GetStringAsync(new Uri("http://moveandsee.azurewebsites.net/api/InterestPoint/GetAllInterestPoints"));
+            var stringInput = await http.GetStringAsync(new Uri(Constants.ADDRESS_API + "InterestPoint/GetAllInterestPoints"));
             InterestPointWithVote[] points = JsonConvert.DeserializeObject<InterestPointWithVote[]>(stringInput);
 
             return points;
@@ -28,16 +26,15 @@ namespace MoveAndSeeBackOffice.Service
         public async Task<int> DeleteInterestPointById(long idInterestPoint, Token token)
         {
             var http = new HttpClient();
-            http.DefaultRequestHeaders.Add("Authorization", "Bearer " + token.TokenString);
-
-            HttpResponseMessage response = await http.DeleteAsync(new Uri("http://moveandsee.azurewebsites.net/api/InterestPoint/DeleteInterestPointById/" + idInterestPoint));
+            http.DefaultRequestHeaders.Add("Authorization", "Bearer " + token.TokenString); 
+            HttpResponseMessage response = await http.DeleteAsync(new Uri(Constants.ADDRESS_API + "InterestPoint/DeleteInterestPointById/" + idInterestPoint));
             if (response.IsSuccessStatusCode)
             {
-                return 200;
+                return Constants.CODE_SUCCESS;
             }
             else
             {
-                return 404;
+                return Constants.CODE_NOT_FOUND;
             }
         }
     }

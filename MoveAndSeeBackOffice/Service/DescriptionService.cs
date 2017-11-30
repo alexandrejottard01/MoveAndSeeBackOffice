@@ -15,10 +15,8 @@ namespace MoveAndSeeBackOffice.Service
         {
             var http = new HttpClient();
             http.DefaultRequestHeaders.Add("Authorization", "Bearer " + token.TokenString);
-
             //Url à changer en : http://moveandsee.azurewebsites.net/api/Description/GetAllDescriptionsSortedByVoteByInterestPoint/
-            //Quand le problème dans l'Api sera reglé
-            var stringInput = await http.GetStringAsync(new Uri("http://moveandsee.azurewebsites.net/api/Description/GetAllDescriptionsByInterestPoint/"+idInterestPoint));
+            var stringInput = await http.GetStringAsync(new Uri(Constants.ADDRESS_API + "Description/GetAllDescriptionsByInterestPoint/"+idInterestPoint));
             DescriptionWithVote[] descriptions = JsonConvert.DeserializeObject<DescriptionWithVote[]>(stringInput);
 
             return descriptions;
@@ -28,15 +26,14 @@ namespace MoveAndSeeBackOffice.Service
         {
             var http = new HttpClient();
             http.DefaultRequestHeaders.Add("Authorization", "Bearer " + token.TokenString);
-
-            HttpResponseMessage response = await http.DeleteAsync(new Uri("http://moveandsee.azurewebsites.net/api/Description/DeleteDescriptionById/" + idDescription));
+            HttpResponseMessage response = await http.DeleteAsync(new Uri(Constants.ADDRESS_API + "Description/DeleteDescriptionById/" + idDescription));
             if (response.IsSuccessStatusCode)
             {
-                return 200;
+                return Constants.CODE_SUCCESS;
             }
             else
             {
-                return 404;
+                return Constants.CODE_NOT_FOUND;
             }
         }
     }

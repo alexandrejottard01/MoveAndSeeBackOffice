@@ -17,8 +17,7 @@ namespace MoveAndSeeBackOffice.Service
         {
             var http = new HttpClient();
             http.DefaultRequestHeaders.Add("Authorization", "Bearer " + token.TokenString);
-
-            var stringInput = await http.GetStringAsync(new Uri("http://moveandsee.azurewebsites.net/api/UnknownPoint/GetAllUnknownPoints"));
+            var stringInput = await http.GetStringAsync(new Uri(Constants.ADDRESS_API + "UnknownPoint/GetAllUnknownPoints"));
             UnknownPoint[] points = JsonConvert.DeserializeObject<UnknownPoint[]>(stringInput);
 
             return points;
@@ -28,15 +27,14 @@ namespace MoveAndSeeBackOffice.Service
         {
             var http = new HttpClient();
             http.DefaultRequestHeaders.Add("Authorization", "Bearer " + token.TokenString);
-
-            HttpResponseMessage response = await http.DeleteAsync(new Uri("http://moveandsee.azurewebsites.net/api/UnknownPoint/DeleteUnknownPointById/" + idUnknownPoint));
+            HttpResponseMessage response = await http.DeleteAsync(new Uri(Constants.ADDRESS_API + "UnknownPoint/DeleteUnknownPointById/" + idUnknownPoint));
             if (response.IsSuccessStatusCode)
             {
-                return 200;
+                return Constants.CODE_SUCCESS;
             }
             else
             {
-                return 404;
+                return Constants.CODE_NOT_FOUND;
             }
         }
     }

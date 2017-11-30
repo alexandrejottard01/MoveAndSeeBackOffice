@@ -80,7 +80,7 @@ namespace MoveAndSeeBackOffice.ViewModel
             var service = new UnknownPointService();
             int resultCode = await service.DeleteUnknownPointById((int)SelectedUnknownPoint.IdUnknownPoint, Token.tokenCurrent);
 
-            if (resultCode == 200)
+            if (resultCode == Constants.CODE_SUCCESS)
             {
                 ListUnknownPoints.Remove(SelectedUnknownPoint);
             }

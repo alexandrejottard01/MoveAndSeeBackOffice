@@ -73,7 +73,7 @@ namespace MoveAndSeeBackOffice.ViewModel
             var service = new InterestPointService();
             int resultCode = await service.DeleteInterestPointById((int)SelectedInterestPoint.InterestPoint.IdInterestPoint, Token.tokenCurrent);
 
-            if (resultCode == 200)
+            if (resultCode == Constants.CODE_SUCCESS)
             {
                 MessengerInstance.Send<InterestPointWithVote>(SelectedInterestPoint, "deleteInterestPoint");
             }

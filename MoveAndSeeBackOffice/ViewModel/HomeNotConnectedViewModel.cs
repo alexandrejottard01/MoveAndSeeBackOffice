@@ -11,6 +11,7 @@ using GalaSoft.MvvmLight.Views;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using Windows.UI.Notifications;
+using Windows.Web.Http.Headers;
 
 namespace MoveAndSeeBackOffice.ViewModel
 {
@@ -25,8 +26,6 @@ namespace MoveAndSeeBackOffice.ViewModel
         }
 
         //Login et password User
-        
-
         public string PseudoUserEntry { get ; set; }
         public string PasswordUserEntry { get; set; }
 

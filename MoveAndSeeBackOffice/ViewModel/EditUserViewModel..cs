@@ -64,7 +64,7 @@ namespace MoveAndSeeBackOffice.ViewModel
 
             int resultCode = await service.EditUser(UserEdit, Token.tokenCurrent);
 
-            if (resultCode == 200)
+            if (resultCode == Constants.CODE_SUCCESS)
             {
                 //Se renseigner sur un autre moyen de faire des notifications
                 var notificationXml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText01);

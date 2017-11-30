@@ -11,24 +11,6 @@ namespace MoveAndSeeBackOffice.Service
 {
     class UserService
     {
-        //public async Task<User> GetUserByPseudo(string pseudoUser)
-        //{
-        //    User user;
-        //    var http = new HttpClient();
-
-        //    HttpResponseMessage reponse = await http.GetAsync(new Uri("http://moveandsee.azurewebsites.net/api/User/GetUserByPseudo/" + pseudoUser));
-        //    if (reponse.IsSuccessStatusCode)
-        //    {
-        //        var stringInput = await http.GetStringAsync(new Uri("http://moveandsee.azurewebsites.net/api/User/GetUserByPseudo/" + pseudoUser));
-        //        user = JsonConvert.DeserializeObject<User>(stringInput);
-        //    }
-        //    else
-        //    {
-        //        user = null;
-        //    }
-        //    return user;
-        //}
-
         public async Task<User> GetUserByPseudo(string pseudoUser, Token token)
         {
             User user;
@@ -37,13 +19,14 @@ namespace MoveAndSeeBackOffice.Service
 
             try
             {
-                var stringInput = await http.GetStringAsync(new Uri("http://moveandsee.azurewebsites.net/api/User/GetUserByPseudo/" + pseudoUser));
+                var stringInput = await http.GetStringAsync(new Uri(Constants.ADDRESS_API + "User/GetUserByPseudo/" + pseudoUser));
                 user = JsonConvert.DeserializeObject<User>(stringInput);
             }
             catch(HttpRequestException e)
             {
                 user = null;
             }
+
             return user;
         }
 
@@ -51,42 +34,29 @@ namespace MoveAndSeeBackOffice.Service
         {
             var http = new HttpClient();
             http.DefaultRequestHeaders.Add("Authorization", "Bearer " + token.TokenString);
-
             string json = JsonConvert.SerializeObject(userEdit);
             HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
-            //HttpContent content = new StringContent(json);
-
-
-            HttpResponseMessage response = await http.PutAsync(new Uri("http://moveandsee.azurewebsites.net/api/User/EditUser"), content);
-
-
-            //HttpResponseMessage response = await http.PutAsync(new Uri("http://moveandsee.azurewebsites.net/api/User/EditUserByPseudo/"), new StringContent(userEdit.ToString(),Encoding.UTF8,"application/json"));
-
-
+            HttpResponseMessage response = await http.PutAsync(new Uri(Constants.ADDRESS_API + "User/EditUser"), content);
             if (response.IsSuccessStatusCode)
             {
-                return 200;
+                return Constants.CODE_SUCCESS;
             }
             else
             {
-                return 400;
+                return Constants.CODE_NOT_FOUND;
             }
         }
 
         public async Task<Token> LoginUser(LoginUser loginUser)
         {
             Token token;
-
             var http = new HttpClient();
-
             string json = JsonConvert.SerializeObject(loginUser);
             HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
 
-
             try
             {
-                var stringInput = await http.PostAsync(new Uri("http://moveandsee.azurewebsites.net/api/Jwt"), content);
-
+                var stringInput = await http.PostAsync(new Uri(Constants.ADDRESS_API + "Jwt"), content);
                 var content2 = await stringInput.Content.ReadAsStringAsync();
                 token = JsonConvert.DeserializeObject<Token>(content2);
             }
