@@ -28,7 +28,7 @@
                 <RowDefinition/>
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
-            <CheckBox x:Name="isCertifiedCheckBox" Content="Certifié" IsChecked="{Binding UserEdit.IsCertified, Mode=TwoWay}" HorizontalAlignment="Center" Grid.Row="2" />
+            <CheckBox x:Name="isCertifiedCheckBox" Content="Certifié" IsChecked="{Binding UserEdit.IsCertified, Mode=TwoWay}" Click="isCertifiedCheckBox_Click"  HorizontalAlignment="Center" Grid.Row="2" />
             <TextBox x:Name="nameCertifiedEdit" Text="{Binding UserEdit.NameCertified, Mode=TwoWay}" IsEnabled="{Binding UserEdit.IsCertified, Mode=TwoWay}" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Height="35" Margin="110,5,0,4.5" Width="172"/>
         </Grid>
         <Button x:Name="ButtonEditUser" Content="Enregistrer les modifications" Command="{Binding EditUserCommand}" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF011559" FontSize="20" Height="40" Grid.Column="1" Grid.Row="2" />

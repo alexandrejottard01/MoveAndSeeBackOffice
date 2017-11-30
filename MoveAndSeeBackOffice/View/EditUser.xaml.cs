@@ -38,6 +38,11 @@ namespace MoveAndSeeBackOffice.View
         {
             base.OnNavigatedFrom(e);
         }
+
+        private void isCertifiedCheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            nameCertifiedEdit.Text = "";
+        }
     }
 
 
