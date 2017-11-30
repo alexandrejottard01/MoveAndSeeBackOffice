@@ -28,7 +28,6 @@
                 <RowDefinition/>
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
-            <CheckBox x:Name="adminCheckBox" Content="Administrateur" IsChecked="{Binding UserEdit.IsAdmin, Mode=TwoWay}" HorizontalAlignment="Center" Grid.Row="1" Margin="5,0,0,0"  />
             <CheckBox x:Name="isCertifiedCheckBox" Content="Certifié" IsChecked="{Binding UserEdit.IsCertified, Mode=TwoWay}" HorizontalAlignment="Center" Grid.Row="2" />
             <TextBox x:Name="nameCertifiedEdit" Text="{Binding UserEdit.NameCertified, Mode=TwoWay}" IsEnabled="{Binding UserEdit.IsCertified, Mode=TwoWay}" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Height="35" Margin="110,5,0,4.5" Width="172"/>
         </Grid>

@@ -23,7 +23,6 @@ namespace MoveAndSeeBackOffice.Model
             get { return _isCertified; }
             set {
                 if (_isCertified == value) {
-                    
                     return;
                 }
                 _isCertified = value;
@@ -48,5 +47,20 @@ namespace MoveAndSeeBackOffice.Model
         
         [Timestamp]
         public byte[] RowVersion { get; set; }
+        
+        public int AccessFailedCount { get; set; }
+        public string ConcurrencyStamp { get; set; }
+        public bool EmailConfirmed { get; set; }
+        public bool LockoutEnabled { get; set; }
+        public DateTimeOffset? LockoutEnd { get; set; }
+        public string NormalizedEmail { get; set; }
+        public string NormalizedUserName { get; set; }
+        public string PasswordHash { get; set; }
+        public string PhoneNumber { get; set; }
+        public bool PhoneNumberConfirmed { get; set; }
+        public string SecurityStamp { get; set; }
+        public bool TwoFactorEnabled { get; set; }
+        
+        
     }
 }
