@@ -16,8 +16,7 @@ namespace MoveAndSeeBackOffice.Service
         {
             var http = new HttpClient();
             http.DefaultRequestHeaders.Add("Authorization", "Bearer " + token.TokenString);
-            //Url à changer en : http://moveandsee.azurewebsites.net/api/InterestPoint/GetAllInterestPointSortedByVoteInterestPoint
-            var stringInput = await http.GetStringAsync(new Uri(Constants.ADDRESS_API + "InterestPoint/GetAllInterestPoints"));
+            var stringInput = await http.GetStringAsync(new Uri(Constants.ADDRESS_API + "InterestPoint/GetAllInterestPointSortedByVoteInterestPoint"));
             InterestPointWithVote[] points = JsonConvert.DeserializeObject<InterestPointWithVote[]>(stringInput);
 
             return points;
