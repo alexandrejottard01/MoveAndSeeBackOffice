@@ -95,6 +95,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converter\AverageConverter.cs" />
     <Compile Include="Model\Constants.cs" />
     <Compile Include="Model\Description.cs" />
     <Compile Include="Model\DescriptionWithVote.cs" />
