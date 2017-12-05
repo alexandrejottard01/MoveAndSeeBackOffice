@@ -15,7 +15,7 @@ namespace MoveAndSeeBackOffice.Service
         {
             var http = new HttpClient();
             http.DefaultRequestHeaders.Add("Authorization", "Bearer " + token.TokenString);
-            var stringInput = await http.GetStringAsync(new Uri(Constants.ADDRESS_API + "Description/GetAllDescriptionsSortedByVoteByInterestPoint/" + idInterestPoint));
+            var stringInput = await http.GetStringAsync(new Uri(Constants.ADDRESS_API + "Description/GetAllDescriptionsByInterestPoint/" + idInterestPoint));
             DescriptionWithVote[] descriptions = JsonConvert.DeserializeObject<DescriptionWithVote[]>(stringInput);
 
             return descriptions;

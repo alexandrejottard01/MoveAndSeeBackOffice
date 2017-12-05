@@ -9,10 +9,7 @@ namespace MoveAndSeeBackOffice.Model
 {
     class DescriptionWithVote
     {
-        [JsonProperty("Description")]
         public Description Description { get; set; }
-
-        [JsonProperty("Average")]
         public int Average { get; set; }
     }
 }

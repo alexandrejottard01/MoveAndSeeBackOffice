@@ -18,7 +18,6 @@ namespace MoveAndSeeBackOffice.Model
         public string Pseudo { get; set; }
         
         private bool _isCertified;
-        [JsonProperty("IsCertified")]
         public bool IsCertified {
             get { return _isCertified; }
             set {
@@ -29,20 +28,11 @@ namespace MoveAndSeeBackOffice.Model
                 RaisePropertyChanged(() => IsCertified);
             }
         }
-
-        [JsonProperty("NameCertified")]
+        
         public string NameCertified { get; set; }
-
-        [JsonProperty("Email")]
         public string Email { get; set; }
-
-        [JsonProperty("Language")]
         public string Language { get; set; }
-
-        [JsonProperty("IsMale")]
         public bool? IsMale { get; set; }
-
-        [JsonProperty("BirthDate")]
         public DateTime? BirthDate { get; set; }
         
         [Timestamp]
