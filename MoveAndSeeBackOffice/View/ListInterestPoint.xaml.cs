@@ -34,11 +34,5 @@ namespace MoveAndSeeBackOffice.View
             base.OnNavigatedTo(e);
             ((ListInterestPointViewModel)DataContext).InitializationListInterestPointViewModel();
         }
-
-        //private void ToDetailInterestPoint(object sender, RoutedEventArgs e)
-        //{
-        //    var viewModel = (ListInterestPointViewModel)DataContext;
-        //    viewModel.GoToDetailInterestPoint();
-        //}
     }
 }

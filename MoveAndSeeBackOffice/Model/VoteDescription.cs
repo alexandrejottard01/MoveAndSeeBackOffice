@@ -9,19 +9,10 @@ namespace MoveAndSeeBackOffice.Model
 {
     class VoteDescription
     {
-        [JsonProperty("IsPositiveAssessment")]
         public bool IsPositiveAssessment { get; set; }
-
-        [JsonProperty("IdUser")]
         public string IdUser { get; set; }
-
-        [JsonProperty("IdDescription")]
         public long IdDescription { get; set; }
-
-        [JsonProperty("IdDescriptionNavigation")]
         public Description IdDescriptionNavigation { get; set; }
-
-        [JsonProperty("IdUserNavigation")]
         public User IdUserNavigation { get; set; }
     }
 }

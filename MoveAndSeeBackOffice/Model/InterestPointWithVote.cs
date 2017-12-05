@@ -9,10 +9,7 @@ namespace MoveAndSeeBackOffice.Model
 {
     class InterestPointWithVote
     {
-        [JsonProperty("InterestPoint")]
         public InterestPoint InterestPoint { get; set; }
-
-        [JsonProperty("Average")]
         public int Average { get; set; }
     }
 }

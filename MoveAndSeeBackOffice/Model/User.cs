@@ -28,7 +28,7 @@ namespace MoveAndSeeBackOffice.Model
                 RaisePropertyChanged(() => IsCertified);
             }
         }
-        
+
         public string NameCertified { get; set; }
         public string Email { get; set; }
         public string Language { get; set; }
@@ -37,7 +37,6 @@ namespace MoveAndSeeBackOffice.Model
         
         [Timestamp]
         public byte[] RowVersion { get; set; }
-        
         public int AccessFailedCount { get; set; }
         public string ConcurrencyStamp { get; set; }
         public bool EmailConfirmed { get; set; }
