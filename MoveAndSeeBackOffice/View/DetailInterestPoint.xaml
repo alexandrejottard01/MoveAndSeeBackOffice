@@ -5,9 +5,14 @@
     xmlns:local="using:MoveAndSeeBackOffice.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converter="using:MoveAndSeeBackOffice.Converter"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=DetailInterestPoint}">
 
+    <Page.Resources>
+        <converter:AverageConverter x:Name="AverageConverter"/>
+    </Page.Resources>
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Grid.Row="7">
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
@@ -25,7 +30,7 @@
         <TextBlock x:Name="Name"  Text="{Binding SelectedInterestPoint.InterestPoint.Name}" Margin="50,0,0,10" FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontWeight="Bold"/>
         <TextBlock x:Name="Latitude" Text="{Binding SelectedInterestPoint.InterestPoint.Latitude}" HorizontalAlignment="Left" Margin="50,0,0,0" FontStyle="Italic" Foreground="#FF535353" Height="54" Grid.Row="1" VerticalAlignment="Top" />
         <TextBlock x:Name="Longitude" Text="{Binding SelectedInterestPoint.InterestPoint.Longitude}" HorizontalAlignment="Left" Margin="150,0,0,0" FontStyle="Italic" Foreground="#FF535353" Height="54" VerticalAlignment="Top" Grid.Row="1" />
-        <TextBlock x:Name="Moyenne" Text="{Binding SelectedInterestPoint.Average}" HorizontalAlignment="Left" Margin="0,0,0,10" FontSize="24" Height="32" VerticalAlignment="Bottom" Grid.Column="1" FontWeight="Bold" />
+        <TextBlock x:Name="Moyenne" Text="{Binding SelectedInterestPoint.Average}" Visibility="{Binding SelectedInterestPoint.Average, Converter={StaticResource AverageConverter}}" HorizontalAlignment="Left" Margin="0,0,0,10" FontSize="24" Height="32" VerticalAlignment="Bottom" Grid.Column="1" FontWeight="Bold" />
 
         <TextBlock x:Name="Pseudo" Text="{Binding SelectedInterestPoint.InterestPoint.IdUserNavigation.Pseudo}" FontSize="18" Margin="50,0,0,0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" />
 
@@ -43,7 +48,7 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Description.Explication}" VerticalAlignment="Top" Margin="3" FontSize="15" />
-                        <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="{Binding Average}" VerticalAlignment="Top" Grid.Column="1" Grid.Row="0" Margin="3" FontSize="22" FontWeight="Bold"/>
+                        <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="{Binding Average}" Visibility="{Binding Average, Converter={StaticResource AverageConverter}}" VerticalAlignment="Top" Grid.Column="1" Grid.Row="0" Margin="3" FontSize="22" FontWeight="Bold"/>
                         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Description.IdUserNavigation.Pseudo}" VerticalAlignment="Top" Grid.Row="3" Margin="3" FontStyle="Italic"/>
                     </Grid>
                 </DataTemplate>
@@ -57,8 +62,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-
-            <Button x:Name="ButtonDetail" Content="Détails" Command="{Binding DetailDescriptionCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="Black" Background="#FFDADADA" FontSize="24" Height="45" Width="150" Margin="10,0,0,5"/>
+            
             <Button x:Name="ButtonHome" Content="Accueil" Command="{Binding HomeConnectedCommand}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="Black" Background="#FFDADADA" FontSize="24" Height="45" Width="150" Grid.Row="2" Margin="0,0,50,5"/>
             <Button x:Name="ButtonBack" Content="Retour&#xD;&#xA;Retour" Command="{Binding BackCommand}" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="Black" Background="#FFDADADA" FontSize="24" Grid.Row="3" Width="150" Height="45" Margin="0,5,50,0"/>
         </Grid>

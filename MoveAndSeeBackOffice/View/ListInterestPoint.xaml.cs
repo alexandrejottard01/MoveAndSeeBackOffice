@@ -23,11 +23,9 @@ namespace MoveAndSeeBackOffice.View
     /// </summary>
     public sealed partial class ListInterestPoint : Page
     {
-        public ListInterestPoint() //Est-ce que ça respecte MVVM ?
+        public ListInterestPoint()
         {
             this.InitializeComponent();
-
-
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {

@@ -49,6 +49,8 @@ namespace MoveAndSeeBackOffice.Service
 
         public async Task<Token> LoginUser(LoginUser loginUser)
         {
+            //A changer, on ne teste pas le token c'est pas propre
+
             Token token;
             var http = new HttpClient();
             string json = JsonConvert.SerializeObject(loginUser);
@@ -60,7 +62,7 @@ namespace MoveAndSeeBackOffice.Service
                 var content2 = await stringInput.Content.ReadAsStringAsync();
                 token = JsonConvert.DeserializeObject<Token>(content2);
             }
-            catch(HttpRequestException e)
+            catch (HttpRequestException e)
             {
                 token = null;
             }

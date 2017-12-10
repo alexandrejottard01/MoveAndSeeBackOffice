@@ -19,8 +19,7 @@ namespace MoveAndSeeBackOffice.ViewModel
             GetAllInterestPointByServiceAsync();
             MessengerInstance.Register<InterestPointWithVote>(this, "deleteInterestPoint", (ip => ListInterestPoints.Remove(ip)));            
         }
-
-        //Methode appelé dès qu'on arrive sur ListInterestPoint (Appelé dans le code-behind) Respect du Mvvm ?
+      
         public void InitializationListInterestPointViewModel()
         {
             SelectedInterestPoint = null;
@@ -63,20 +62,6 @@ namespace MoveAndSeeBackOffice.ViewModel
                     GoToDetailInterestPoint();
                     RaisePropertyChanged("SelectedInterestPoint");
                 }
-            }
-        }
-
-        //Navigation Command DetailInterestPoint
-
-        private ICommand _detailInterestPointCommand;
-        
-        public ICommand DetailInterestPointCommand {
-            get {
-                if(this._detailInterestPointCommand == null)
-                {
-                    this._detailInterestPointCommand = new RelayCommand(() => GoToDetailInterestPoint());
-                }
-                return this._detailInterestPointCommand;
             }
         }
 

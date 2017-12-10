@@ -47,12 +47,8 @@ namespace MoveAndSeeBackOffice.ViewModel
 
             if (user == null)
             {
-                //Se renseigner sur un autre moyen de faire des notifications
-                var notificationXml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText01);
-                var toastElements = notificationXml.GetElementsByTagName("text");
-                toastElements[0].AppendChild(notificationXml.CreateTextNode("Utilisateur non trouvé"));
-                var toastNotification = new ToastNotification(notificationXml);
-                ToastNotificationManager.CreateToastNotifier().Show(toastNotification);
+                var messageDialog = new Windows.UI.Popups.MessageDialog("Utilisateur non trouvé");
+                await messageDialog.ShowAsync();
             }
             else
             {

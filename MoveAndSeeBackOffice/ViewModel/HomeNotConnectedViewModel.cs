@@ -12,6 +12,7 @@ using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using Windows.UI.Notifications;
 using Windows.Web.Http.Headers;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace MoveAndSeeBackOffice.ViewModel
 {
@@ -50,26 +51,48 @@ namespace MoveAndSeeBackOffice.ViewModel
             Token token = await service.LoginUser(this.LoginUser);
 
 
-
+            //A changer, on ne teste pas le token c'est pas propre
             if (token == null)
             {
-                //Se renseigner sur un autre moyen de faire des notifications
-                var notificationXml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText01);
-                var toastElements = notificationXml.GetElementsByTagName("text");
-                toastElements[0].AppendChild(notificationXml.CreateTextNode("Problème de connection"));
-                var toastNotification = new ToastNotification(notificationXml);
-                ToastNotificationManager.CreateToastNotifier().Show(toastNotification);
+                var messageDialog = new Windows.UI.Popups.MessageDialog("Problème de connection");
+                await messageDialog.ShowAsync();
             }
             else
             {
-                Token.tokenCurrent = token;
-                GoToHomeConnected();
+                if (VerificationIsAdmin(token.TokenString))
+                {
+                    Token.tokenCurrent = token;
+                    GoToHomeConnected();
+                }
+                else
+                {
+                    var messageDialog = new Windows.UI.Popups.MessageDialog("Vous n'êtes pas administrateur");
+                    await messageDialog.ShowAsync();
+                }
+                
             }
+        }
+
+        public bool VerificationIsAdmin(String token)
+        {
+            var handler = new JwtSecurityTokenHandler();
+            var tokenS = handler.ReadToken(token) as JwtSecurityToken;
+            var jti = tokenS.Claims.SingleOrDefault(claim => claim.Type == "Role").Value;
+
+            if(jti !=null && jti == "admin")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
 
         public void GoToHomeConnected()
         {
-            _navigationService.NavigateTo("HomeConnected");  
+            _navigationService.NavigateTo("HomeConnected");
         }
     }
 }

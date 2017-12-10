@@ -66,22 +66,13 @@ namespace MoveAndSeeBackOffice.ViewModel
 
             if (resultCode == Constants.CODE_SUCCESS)
             {
-                //Se renseigner sur un autre moyen de faire des notifications
-                var notificationXml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText01);
-                var toastElements = notificationXml.GetElementsByTagName("text");
-                toastElements[0].AppendChild(notificationXml.CreateTextNode("Modifications Enregistrés"));
-                var toastNotification = new ToastNotification(notificationXml);
-                ToastNotificationManager.CreateToastNotifier().Show(toastNotification);
-                GoToHomeConnected();
+                var messageDialog = new Windows.UI.Popups.MessageDialog("Modifications Enregistrés");
+                await messageDialog.ShowAsync();
             }
             else
             {
-                //Se renseigner sur un autre moyen de faire des notifications
-                var notificationXml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText01);
-                var toastElements = notificationXml.GetElementsByTagName("text");
-                toastElements[0].AppendChild(notificationXml.CreateTextNode("Modifications Non Entregistrés"));
-                var toastNotification = new ToastNotification(notificationXml);
-                ToastNotificationManager.CreateToastNotifier().Show(toastNotification);
+                var messageDialog = new Windows.UI.Popups.MessageDialog("Modifications Non Entregistrés");
+                await messageDialog.ShowAsync();
             }
         }
 

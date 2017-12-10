@@ -79,12 +79,8 @@ namespace MoveAndSeeBackOffice.ViewModel
             }
             else
             {
-                //Se renseigner sur un autre moyen de faire des notifications
-                var notificationXml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText01);
-                var toastElements = notificationXml.GetElementsByTagName("text");
-                toastElements[0].AppendChild(notificationXml.CreateTextNode("L'élément à supprimer est introuvable"));
-                var toastNotification = new ToastNotification(notificationXml);
-                ToastNotificationManager.CreateToastNotifier().Show(toastNotification);
+                var messageDialog = new Windows.UI.Popups.MessageDialog("L'élément à supprimer est introuvable");
+                await messageDialog.ShowAsync();
             }
             _navigationService.NavigateTo("ListInterestPoint");
         }
@@ -97,10 +93,12 @@ namespace MoveAndSeeBackOffice.ViewModel
                 _selectedDescription = value;
                 if (_selectedDescription != null)
                 {
+                    GoToDetailDescription();
                     RaisePropertyChanged("SelectedDescription");
                 }
             }
         }
+        
 
         //Command Navigation DetailDescription
         private ICommand _detailDescriptionCommand;
