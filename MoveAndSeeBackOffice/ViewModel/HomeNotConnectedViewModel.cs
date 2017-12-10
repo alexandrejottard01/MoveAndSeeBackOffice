@@ -77,9 +77,9 @@ namespace MoveAndSeeBackOffice.ViewModel
         {
             var handler = new JwtSecurityTokenHandler();
             var tokenS = handler.ReadToken(token) as JwtSecurityToken;
-            var jti = tokenS.Claims.SingleOrDefault(claim => claim.Type == "Role").Value;
+            var role = tokenS.Claims.SingleOrDefault(claim => claim.Type == "Role").Value;
 
-            if(jti !=null && jti == "admin")
+            if(role != null && role == "admin")
             {
                 return true;
             }

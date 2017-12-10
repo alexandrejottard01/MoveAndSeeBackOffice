@@ -10,17 +10,17 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="8*"/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="8*"/>
         </Grid.RowDefinitions>
         <TextBlock Text="HomeNotConnected" Grid.RowSpan="5" />
 
         <TextBox x:Name="pseudoEntry" PlaceholderText="Pseudo" Width="224" Text="{Binding PseudoUserEntry, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
         <PasswordBox x:Name="passwordEntry" PlaceholderText="Mot de passe" Width="224" Password="{Binding PasswordUserEntry, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2"/>
-        <Button x:Name="Login" Content="Se connecter" Command="{Binding LoginCommand}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="#FF011559" Background="#FFE4E4E4" FontSize="20" Grid.Row="3" BorderThickness="0" Width="240" Height="45" />
+        <Button x:Name="Login" Content="Se connecter" Command="{Binding LoginCommand}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="#FF011559" Background="#FFE4E4E4" FontSize="16" Grid.Row="3" BorderThickness="0" Width="150" Height="30"/>
 
 
     </Grid>

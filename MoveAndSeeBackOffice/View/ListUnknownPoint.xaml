@@ -5,16 +5,21 @@
     xmlns:local="using:MoveAndSeeBackOffice.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converter="using:MoveAndSeeBackOffice.Converter"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=ListUnknownPoint}">
 
+    <Page.Resources>
+        <converter:DateConverter x:Name="DateConverter"/>
+    </Page.Resources>
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="5*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
@@ -31,7 +36,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding DateCreation}" VerticalAlignment="Top" />
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding DateCreation, Converter={StaticResource DateConverter}}" VerticalAlignment="Top" />
                         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Latitude}" VerticalAlignment="Top" Grid.Row="1"/>
                         <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="{Binding Longitude}" VerticalAlignment="Top" Grid.Row="1"/>
                         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding IdUserNavigation.Pseudo}" VerticalAlignment="Top" Grid.Row="2"/>

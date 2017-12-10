@@ -10,9 +10,11 @@
     DataContext="{Binding Source={StaticResource Locator}, Path=ListInterestPoint}">
 
     <Page.Resources>
-        <converter:AverageConverter x:Name="AverageConverter"/>
+        <converter:AverageNegativeConverter x:Name="AverageNegativeConverter"/>
+        <converter:AveragePercentageConverter x:Name="AveragePercentageConverter"/>
+        <converter:DateConverter x:Name="DateConverter"/>
     </Page.Resources>
-    
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -20,20 +22,21 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
+            <ColumnDefinition Width="3*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Liste des points d'intérêt" Foreground="#FF1B57C6" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,20,0,0" />
-        <ListView ItemsSource="{Binding ListInterestPoints, Mode=TwoWay}" SelectedItem="{Binding SelectedInterestPoint, Mode=TwoWay, UpdateSourceTrigger=Default}" SelectionMode ="Single"  IsItemClickEnabled = "True"  Margin="50" Grid.Row="1">
+        <TextBlock Text="Liste des points d'intérêt" Foreground="#FF1B57C6" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,0" Grid.Column="1" />
+        <ListView ItemsSource="{Binding ListInterestPoints, Mode=TwoWay}" SelectedItem="{Binding SelectedInterestPoint, Mode=TwoWay, UpdateSourceTrigger=Default}" SelectionMode ="Single"  IsItemClickEnabled = "True"  Margin="50" Grid.Row="1" Grid.Column="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" >
+                    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,11" >
 
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="575"/>
                             <ColumnDefinition Width="300"/>
-                            <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="{Binding Average}" Visibility="{Binding Average, Converter={StaticResource AverageConverter}}" VerticalAlignment="Top" Margin="3" Grid.Column="1" FontSize="35"/>
+                        <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="{Binding Average, Converter={StaticResource AveragePercentageConverter}}" Visibility="{Binding Average, Converter={StaticResource AverageNegativeConverter}}" VerticalAlignment="Top" Margin="3" Grid.Column="1" FontSize="35"/>
 
 
                         <Grid>
@@ -45,17 +48,14 @@
 
                             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding InterestPoint.Name}" VerticalAlignment="Top" Margin="3" FontSize="20" FontWeight="Bold"/>
                             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding InterestPoint.IdUserNavigation.Pseudo}" VerticalAlignment="Top" Grid.Row="3" Margin="3"/>
-                            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding InterestPoint.DateCreation}" VerticalAlignment="Top" Grid.Row="1" Margin="3" FontStyle="Italic" Foreground="#FF646464"/>
+                            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding InterestPoint.DateCreation, Converter={StaticResource DateConverter}}" VerticalAlignment="Top" Grid.Row="1" Margin="3" FontStyle="Italic" Foreground="#FF646464"/>
                         </Grid>
-
-
-
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
 
         </ListView>
-        <Grid Grid.Column="1" Grid.Row="1">
+        <Grid Grid.Column="2" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height="3*"/>
