@@ -11,8 +11,9 @@
 
     <Page.Resources>
         <converter:AverageNegativeConverter x:Name="AverageNegativeConverter"/>
+        <converter:AveragePercentageConverter x:Name="AveragePercentageConverter"/>
     </Page.Resources>
-    
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Grid.Row="7">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -22,18 +23,19 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
+            <ColumnDefinition Width="5*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="DeleteDescription" Content="Supprimer" Margin="50,50,0,0" Command="{Binding DeleteDescriptionCommand}" Foreground="#FF011559" FontSize="20" Width="149" Grid.Row="3" VerticalAlignment="Top" Height="45"/>
+        <Button x:Name="DeleteDescription" Content="Supprimer" Command="{Binding DeleteDescriptionCommand}" Foreground="#FF011559" FontSize="20" Width="150" Grid.Row="3" VerticalAlignment="Top" Height="45" Grid.Column="2" HorizontalAlignment="Right" Margin="0,10,50,0"/>
 
-        <TextBlock Text="{Binding SelectedDescription.Description.Explication}"  TextWrapping="Wrap" Margin="50,50,50,9.5" FontSize="22"/>
-        <TextBlock Text="{Binding SelectedDescription.Description.IdInterestPointNavigation.Name}" HorizontalAlignment="Left" Margin="50,0,0,0" FontStyle="Italic" Foreground="Black" Grid.Row="1" FontSize="20" />
-        <TextBlock Text="{Binding SelectedDescription.Description.IdUserNavigation.Pseudo}" HorizontalAlignment="Left" Margin="50,0,0,0" FontStyle="Italic" Foreground="Black" Grid.Row="2" FontSize="20"  />
-        <TextBlock Text="{Binding SelectedDescription.Average}" Visibility="{Binding SelectedDescription.Average, Converter={StaticResource AverageNegativeConverter}}" HorizontalAlignment="Left" Margin="50,50,0,0" FontSize="24" Grid.Column="1"  />
+        <TextBlock Text="{Binding SelectedDescription.Description.Explication}" TextWrapping="Wrap" FontSize="22" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
+        <TextBlock Text="{Binding SelectedDescription.Description.IdInterestPointNavigation.Name}" HorizontalAlignment="Center" FontStyle="Italic" Foreground="Black" FontSize="20" Grid.Column="1" VerticalAlignment="Center" />
+        <TextBlock Text="{Binding SelectedDescription.Description.IdUserNavigation.Pseudo}" HorizontalAlignment="Center" Margin="0" FontStyle="Italic" Foreground="Black" Grid.Row="2" FontSize="20" Grid.Column="1" VerticalAlignment="Center"  />
+        <TextBlock Text="{Binding SelectedDescription.Average, Converter={StaticResource AveragePercentageConverter}}" Visibility="{Binding SelectedDescription.Average, Converter={StaticResource AverageNegativeConverter}}" HorizontalAlignment="Center" FontSize="24" Grid.Column="2" Height="30" VerticalAlignment="Center"  />
 
 
-        <Grid Grid.Column="1" Grid.Row="3">
+        <Grid Grid.Column="2" Grid.Row="3">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height="3*"/>

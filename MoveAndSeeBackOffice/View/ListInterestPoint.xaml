@@ -32,11 +32,11 @@
                     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,11" >
 
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="575"/>
+                            <ColumnDefinition Width="615"/>
                             <ColumnDefinition Width="300"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="{Binding Average, Converter={StaticResource AveragePercentageConverter}}" Visibility="{Binding Average, Converter={StaticResource AverageNegativeConverter}}" VerticalAlignment="Top" Margin="3" Grid.Column="1" FontSize="35"/>
+                        <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="{Binding Average, Converter={StaticResource AveragePercentageConverter}}" Visibility="{Binding Average, Converter={StaticResource AverageNegativeConverter}}" VerticalAlignment="Center" Margin="3" Grid.Column="1" FontSize="20"/>
 
 
                         <Grid>

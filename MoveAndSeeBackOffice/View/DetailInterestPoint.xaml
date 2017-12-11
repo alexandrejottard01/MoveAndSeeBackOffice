@@ -11,8 +11,9 @@
 
     <Page.Resources>
         <converter:AverageNegativeConverter x:Name="AverageNegativeConverter"/>
+        <converter:AveragePercentageConverter x:Name="AveragePercentageConverter"/>
     </Page.Resources>
-    
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Grid.Row="7">
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
@@ -21,20 +22,28 @@
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="3*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="ButtonDelete" Content="Supprimer" Command="{Binding DeleteInterestPointCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="Black" Background="#FFDADADA" FontSize="24" Height="45" Width="150" Margin="10,0,0,5" Grid.Row="1" Grid.Column="1"/>
+        <Button x:Name="ButtonDelete" Content="Supprimer" Command="{Binding DeleteInterestPointCommand}" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="Black" Background="#FFDADADA" FontSize="24" Height="45" Width="150" Margin="10,0,50,0" Grid.Row="1" Grid.Column="2"/>
 
-        <TextBlock x:Name="Name"  Text="{Binding SelectedInterestPoint.InterestPoint.Name}" Margin="50,0,0,10" FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontWeight="Bold"/>
-        <TextBlock x:Name="Latitude" Text="{Binding SelectedInterestPoint.InterestPoint.Latitude}" HorizontalAlignment="Left" Margin="50,0,0,0" FontStyle="Italic" Foreground="#FF535353" Height="54" Grid.Row="1" VerticalAlignment="Top" />
-        <TextBlock x:Name="Longitude" Text="{Binding SelectedInterestPoint.InterestPoint.Longitude}" HorizontalAlignment="Left" Margin="150,0,0,0" FontStyle="Italic" Foreground="#FF535353" Height="54" VerticalAlignment="Top" Grid.Row="1" />
-        <TextBlock x:Name="Moyenne" Text="{Binding SelectedInterestPoint.Average}" Visibility="{Binding SelectedInterestPoint.Average, Converter={StaticResource AverageNegativeConverter}}" HorizontalAlignment="Left" Margin="0,0,0,10" FontSize="24" Height="32" VerticalAlignment="Bottom" Grid.Column="1" FontWeight="Bold" />
+        <TextBlock x:Name="Name"  Text="{Binding SelectedInterestPoint.InterestPoint.Name}" Margin="50,0,0,10" FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontWeight="Bold" Grid.Column="1"/>
+        <TextBlock x:Name="Latitude" Text="{Binding SelectedInterestPoint.InterestPoint.Latitude}" HorizontalAlignment="Left" Margin="50,0,0,0" FontStyle="Italic" Foreground="#FF535353" Height="54" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBlock x:Name="Longitude" Text="{Binding SelectedInterestPoint.InterestPoint.Longitude}" HorizontalAlignment="Left" Margin="150,0,0,0" FontStyle="Italic" Foreground="#FF535353" Height="54" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
+        <TextBlock x:Name="Moyenne" Text="{Binding SelectedInterestPoint.Average, Converter={StaticResource AveragePercentageConverter}}" Visibility="{Binding SelectedInterestPoint.Average, Converter={StaticResource AverageNegativeConverter}}" HorizontalAlignment="Left" Margin="0,0,0,10" FontSize="24" Height="32" VerticalAlignment="Bottom" Grid.Column="2" FontWeight="Bold" />
 
-        <TextBlock x:Name="Pseudo" Text="{Binding SelectedInterestPoint.InterestPoint.IdUserNavigation.Pseudo}" FontSize="18" Margin="50,0,0,0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <TextBlock x:Name="Pseudo" Text="{Binding SelectedInterestPoint.InterestPoint.IdUserNavigation.Pseudo}" FontSize="18" Margin="50,0,0,0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1"/>
 
-        <ListView ItemsSource="{Binding ListDescriptions}" SelectedItem="{Binding SelectedDescription, Mode=TwoWay}" Margin="0,-0.5,0,0" Grid.Row="3">
+        <!--<TextBlock x:Name="Name"  Text="Nom de l'intérêt" Margin="50,0,0,10" FontSize="36" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontWeight="Bold" Grid.Column="1"/>
+        <TextBlock x:Name="Latitude" Text="2.63688" HorizontalAlignment="Left" Margin="50,0,0,0" FontStyle="Italic" Foreground="#FF535353" Height="54" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" />
+        <TextBlock x:Name="Longitude" Text="23.63539" HorizontalAlignment="Left" Margin="120,0,0,0" FontStyle="Italic" Foreground="#FF535353" Height="54" Grid.Column="1" VerticalAlignment="Top" Grid.Row="1" />
+        <TextBlock x:Name="Moyenne" Text="56 %" Visibility="{Binding SelectedInterestPoint.Average, Converter={StaticResource AverageNegativeConverter}}" HorizontalAlignment="Right" Margin="10,0,50,10" FontSize="24" Height="32" VerticalAlignment="Bottom" Grid.Column="2" FontWeight="Bold" />
+
+        <TextBlock x:Name="Pseudo" Text="Chronix" FontSize="18" Margin="50,0,0,0" Grid.Row="2" HorizontalAlignment="Left" Grid.Column="1" VerticalAlignment="Top" />-->
+        
+        <ListView ItemsSource="{Binding ListDescriptions}" SelectedItem="{Binding SelectedDescription, Mode=TwoWay}" Margin="0,66,0,0" Grid.Row="3" Grid.Column="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Grid.ColumnSpan="2" Grid.RowSpan="2" >
@@ -43,26 +52,26 @@
                             <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="350"/>
+                            <ColumnDefinition Width="870"/>
                             <ColumnDefinition Width="150"/>
                         </Grid.ColumnDefinitions>
 
                         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Description.Explication}" VerticalAlignment="Top" Margin="3" FontSize="15" />
-                        <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="{Binding Average}" Visibility="{Binding Average, Converter={StaticResource AverageNegativeConverter}}" VerticalAlignment="Top" Grid.Column="1" Grid.Row="0" Margin="3" FontSize="22" FontWeight="Bold"/>
+                        <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="{Binding Average, Converter={StaticResource AveragePercentageConverter}}" Visibility="{Binding Average, Converter={StaticResource AverageNegativeConverter}}" VerticalAlignment="Top" Grid.Column="1" Grid.Row="0" Margin="3" FontSize="20" FontWeight="Bold"/>
                         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Description.IdUserNavigation.Pseudo}" VerticalAlignment="Top" Grid.Row="3" Margin="3" FontStyle="Italic"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
-        <Grid Grid.Column="1" Grid.Row="3">
+        <Grid Grid.Column="2" Grid.Row="3" Margin="0,0.5,0,-1">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height="3*"/>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            
+
             <Button x:Name="ButtonHome" Content="Accueil" Command="{Binding HomeConnectedCommand}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="Black" Background="#FFDADADA" FontSize="24" Height="45" Width="150" Grid.Row="2" Margin="0,0,50,5"/>
             <Button x:Name="ButtonBack" Content="Retour&#xD;&#xA;Retour" Command="{Binding BackCommand}" HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="Black" Background="#FFDADADA" FontSize="24" Grid.Row="3" Width="150" Height="45" Margin="0,5,50,0"/>
         </Grid>

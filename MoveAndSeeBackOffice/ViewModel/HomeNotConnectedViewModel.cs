@@ -48,7 +48,8 @@ namespace MoveAndSeeBackOffice.ViewModel
         public async Task LoginServiceAsync()
         {
             var service = new UserService();
-            Token token = await service.LoginUser(this.LoginUser);
+            LoginUser test = new LoginUser("Chronix","Coucoucoucou007,");
+            Token token = await service.LoginUser(test/*this.LoginUser*/);
 
 
             //A changer, on ne teste pas le token c'est pas propre
