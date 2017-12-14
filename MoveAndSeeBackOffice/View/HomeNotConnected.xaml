@@ -16,7 +16,6 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="8*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="HomeNotConnected" Grid.RowSpan="5" />
 
         <TextBox x:Name="pseudoEntry" PlaceholderText="Pseudo" Width="224" Text="{Binding PseudoUserEntry, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
         <PasswordBox x:Name="passwordEntry" PlaceholderText="Mot de passe" Width="224" Password="{Binding PasswordUserEntry, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2"/>
