@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,8 +60,10 @@ namespace MoveAndSeeBackOffice.Service
             try
             {
                 var stringInput = await http.PostAsync(new Uri(Constants.ADDRESS_API + "Jwt"), content);
-                var content2 = await stringInput.Content.ReadAsStringAsync();
-                token = JsonConvert.DeserializeObject<Token>(content2);
+                HttpStatusCode resultCode = stringInput.StatusCode;
+
+                var stringToken = await stringInput.Content.ReadAsStringAsync();
+                token = JsonConvert.DeserializeObject<Token>(stringToken);
             }
             catch (HttpRequestException e)
             {

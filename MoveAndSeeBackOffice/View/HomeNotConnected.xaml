@@ -17,6 +17,7 @@
             <RowDefinition Height="8*"/>
         </Grid.RowDefinitions>
 
+        <!--Rajouter un nombre maximum et minimum de caractère à pouvoir entrer dans les log-->
         <TextBox x:Name="pseudoEntry" PlaceholderText="Pseudo" Width="224" Text="{Binding PseudoUserEntry, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
         <PasswordBox x:Name="passwordEntry" PlaceholderText="Mot de passe" Width="224" Password="{Binding PasswordUserEntry, Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2"/>
         <Button x:Name="Login" Content="Se connecter" Command="{Binding LoginCommand}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Foreground="#FF011559" Background="#FFE4E4E4" FontSize="16" Grid.Row="3" BorderThickness="0" Width="150" Height="30"/>

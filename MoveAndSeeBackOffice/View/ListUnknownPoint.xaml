@@ -38,7 +38,7 @@
                         </Grid.RowDefinitions>
 
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1100"/>
+                            <ColumnDefinition Width="1000"/>
                         </Grid.ColumnDefinitions>
 
                         <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="{Binding DateCreation, Converter={StaticResource DateConverter}}" Grid.Row="2" VerticalAlignment="Top" />
