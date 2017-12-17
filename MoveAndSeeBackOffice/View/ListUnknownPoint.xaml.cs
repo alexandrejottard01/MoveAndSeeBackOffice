@@ -27,5 +27,11 @@ namespace MoveAndSeeBackOffice.View
         {
             this.InitializeComponent();
         }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            ((ListUnknownPointViewModel)DataContext).InitializationListUnknownPointViewModel();
+        }
     }
 }

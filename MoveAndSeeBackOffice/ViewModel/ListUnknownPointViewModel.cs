@@ -25,6 +25,12 @@ namespace MoveAndSeeBackOffice.ViewModel
             GetAllUnknownPointByServiceAsync();
         }
 
+        public void InitializationListUnknownPointViewModel()
+        {
+            SelectedUnknownPoint = null;
+            GetAllUnknownPointByServiceAsync();
+        }
+
         //Liste de UnknownPoint
         private ObservableCollection<UnknownPoint> _listUnknownPoints = null;
 

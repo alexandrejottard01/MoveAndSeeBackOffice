@@ -13,6 +13,8 @@ using GalaSoft.MvvmLight.Command;
 using Windows.UI.Notifications;
 using Windows.Web.Http.Headers;
 using System.IdentityModel.Tokens.Jwt;
+using System.Net.Http;
+using System.ComponentModel.DataAnnotations;
 
 namespace MoveAndSeeBackOffice.ViewModel
 {
@@ -49,46 +51,27 @@ namespace MoveAndSeeBackOffice.ViewModel
         {
             var service = new UserService();
             //LoginUser test = new LoginUser("Chronix","Coucoucoucou007,");
-            Token token = await service.LoginUser(/*test*/this.LoginUser);
-
-
-            //A changer, on ne teste pas le token c'est pas propre
-            if (token == null)
-            {
-                var messageDialog = new Windows.UI.Popups.MessageDialog("Problème de connection");
-                await messageDialog.ShowAsync();
-            }
-            else
-            {
-                if (VerificationIsAdmin(token.TokenString))
-                {
-                    Token.tokenCurrent = token;
-                    GoToHomeConnected();
-                }
-                else
-                {
-                    var messageDialog = new Windows.UI.Popups.MessageDialog("Vous n'êtes pas administrateur");
-                    await messageDialog.ShowAsync();
-                }
-                
-            }
-        }
-
-        public bool VerificationIsAdmin(String token)
-        {
-            var handler = new JwtSecurityTokenHandler();
-            var tokenS = handler.ReadToken(token) as JwtSecurityToken;
-            var role = tokenS.Claims.SingleOrDefault(claim => claim.Type == "Role").Value;
-
-            if(role != null && role == "admin")
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
             
+            int resultCode = await service.LoginUser(/*test*/this.LoginUser);
+
+            switch (resultCode)
+            {
+                case 200:
+                    GoToHomeConnected();
+                    break;
+                case 401:
+                    var messageNotAdmin = new Windows.UI.Popups.MessageDialog("Accès interdit");
+                    await messageNotAdmin.ShowAsync();
+                    break;
+                case 404:
+                    var messageNotFound = new Windows.UI.Popups.MessageDialog("Serveur non trouvé");
+                    await messageNotFound.ShowAsync();
+                    break;
+                case 0:
+                    var messageProbleme = new Windows.UI.Popups.MessageDialog("Problème de connection");
+                    await messageProbleme.ShowAsync();
+                    break;
+            }
         }
 
         public void GoToHomeConnected()

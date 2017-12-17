@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -48,10 +49,9 @@ namespace MoveAndSeeBackOffice.Service
             }
         }
 
-        public async Task<Token> LoginUser(LoginUser loginUser)
+        public async Task<int> LoginUser(LoginUser loginUser)
         {
-            //A changer, on ne teste pas le token c'est pas propre
-
+            int resultCode = 0;
             Token token;
             var http = new HttpClient();
             string json = JsonConvert.SerializeObject(loginUser);
@@ -60,17 +60,50 @@ namespace MoveAndSeeBackOffice.Service
             try
             {
                 var stringInput = await http.PostAsync(new Uri(Constants.ADDRESS_API + "Jwt"), content);
-                HttpStatusCode resultCode = stringInput.StatusCode;
+                HttpStatusCode statusCode = stringInput.StatusCode;
 
-                var stringToken = await stringInput.Content.ReadAsStringAsync();
-                token = JsonConvert.DeserializeObject<Token>(stringToken);
+                if(statusCode == HttpStatusCode.OK)
+                {
+                    var stringToken = await stringInput.Content.ReadAsStringAsync();
+                    token = JsonConvert.DeserializeObject<Token>(stringToken);
+
+                    if (VerificationIsAdmin(token.TokenString))
+                    {
+                        resultCode = 200;
+                        Token.tokenCurrent = token;
+                    }
+                    else
+                    {
+                        resultCode = 401;
+                    }
+                }
+                else
+                {
+                    if(statusCode == HttpStatusCode.NotFound)
+                    {
+                        resultCode = 404;
+                    }
+                    else
+                    {
+                        resultCode = 401;
+                    }
+                }
             }
-            catch (HttpRequestException e)
+            catch (HttpRequestException)
             {
-                token = null;
+                resultCode = 0;
             }
 
-            return token;
+            return resultCode;
+        }
+
+        public bool VerificationIsAdmin(String token)
+        {
+            var handler = new JwtSecurityTokenHandler();
+            var tokenS = handler.ReadToken(token) as JwtSecurityToken;
+            var role = tokenS.Claims.SingleOrDefault(claim => claim.Type == "Role").Value;
+
+            return (role != null && role == "admin");
         }
     }
 }
