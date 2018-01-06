@@ -7,13 +7,8 @@ using System.Threading.Tasks;
 
 namespace MoveAndSeeBackOffice.Model
 {
-    class UnknownPoint
+    class UnknownPoint : Point
     {
         public long IdUnknownPoint { get; set; }
-        public string IdUser { get; set; }
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
-        public DateTime DateCreation { get; set; }
-        public User IdUserNavigation { get; set; }
     }
 }

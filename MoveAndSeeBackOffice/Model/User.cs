@@ -49,7 +49,5 @@ namespace MoveAndSeeBackOffice.Model
         public bool PhoneNumberConfirmed { get; set; }
         public string SecurityStamp { get; set; }
         public bool TwoFactorEnabled { get; set; }
-        
-        
     }
 }
