@@ -5,7 +5,7 @@ using MoveAndSeeBackOffice.View;
 
 namespace MoveAndSeeBackOffice.ViewModel
 {
-    class ViewModelLocator
+    class ViewModelLocator //Test 10/01
     {
         public ViewModelLocator()
         {
