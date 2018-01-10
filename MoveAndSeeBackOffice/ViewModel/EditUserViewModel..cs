@@ -52,7 +52,7 @@ namespace MoveAndSeeBackOffice.ViewModel
             get {
                 if (this._editUserCommand == null)
                 {
-                    this._editUserCommand = new RelayCommand(() => EditUserByServiceAsync());
+                    this._editUserCommand = new RelayCommand(async() => await EditUserByServiceAsync());
                 }
                 return this._editUserCommand;
             }

@@ -62,7 +62,7 @@ namespace MoveAndSeeBackOffice.ViewModel
             get {
                 if (this._deleteInterestPointCommand == null)
                 {
-                    this._deleteInterestPointCommand = new RelayCommand(() => DeleteInterestPointAsync());
+                    this._deleteInterestPointCommand = new RelayCommand(async() => await DeleteInterestPointAsync());
                 }
                 return this._deleteInterestPointCommand;
             }

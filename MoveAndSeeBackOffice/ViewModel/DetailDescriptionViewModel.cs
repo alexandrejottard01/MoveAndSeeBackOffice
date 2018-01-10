@@ -38,7 +38,7 @@ namespace MoveAndSeeBackOffice.ViewModel
             get {
                 if (this._deleteDescriptionCommand == null)
                 {
-                    this._deleteDescriptionCommand = new RelayCommand(() => DeleteDescriptionAsync());
+                    this._deleteDescriptionCommand = new RelayCommand(async() => await DeleteDescriptionAsync());
                 }
                 return this._deleteDescriptionCommand;
             }

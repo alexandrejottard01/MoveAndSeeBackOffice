@@ -75,7 +75,7 @@ namespace MoveAndSeeBackOffice.ViewModel
             get {
                 if (this._deleteUnknownPointCommand == null)
                 {
-                    this._deleteUnknownPointCommand = new RelayCommand(() => DeleteUnknownPointAsync());
+                    this._deleteUnknownPointCommand = new RelayCommand(async() => await DeleteUnknownPointAsync());
                 }
                 return this._deleteUnknownPointCommand;
             }

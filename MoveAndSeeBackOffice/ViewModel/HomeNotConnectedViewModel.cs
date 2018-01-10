@@ -41,7 +41,7 @@ namespace MoveAndSeeBackOffice.ViewModel
             get {
                 if (this._loginCommand == null)
                 {
-                    this._loginCommand = new RelayCommand(() => LoginServiceAsync());
+                    this._loginCommand = new RelayCommand(async() => await LoginServiceAsync());
                 }
                 return this._loginCommand;
             }

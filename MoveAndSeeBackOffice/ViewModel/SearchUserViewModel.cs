@@ -32,8 +32,7 @@ namespace MoveAndSeeBackOffice.ViewModel
             get {
                 if (this._searchUserCommand == null)
                 {
-                    this._searchUserCommand = new RelayCommand(() => SearchUserByServiceAsync());
-                    //A FAIRE -> this._searchUserCommand = new RelayCommand(async () => await SearchUserByServiceAsync()); 
+                    this._searchUserCommand = new RelayCommand(async() => await SearchUserByServiceAsync());
                 }
                 return this._searchUserCommand;
             }
